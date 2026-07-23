@@ -1,269 +1,290 @@
-/* ==========================
-   EXAMSHIELD LPS MAIN STYLE
-========================== */
+/* ==========================================================
+   Google Font
+========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* ==========================================================
+   General
+========================================================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
 }
 
 body{
     background:#f4f6f9;
-    color:#333;
+    font-family:'Poppins',sans-serif;
+    color:#212529;
 }
 
-/* Links */
 
-a{
-    text-decoration:none;
-}
-
-ul{
-    list-style:none;
-}
-
-/* Layout */
-
-.wrapper{
-    display:flex;
-    min-height:100vh;
-}
-
-.content{
-    flex:1;
-    padding:20px;
-}
-
-/* Navbar */
+/* ==========================================================
+   Navbar
+========================================================== */
 
 .navbar{
-    background:#2563eb;
-    color:#fff;
-    padding:15px 25px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    height:65px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    z-index:1050;
 }
 
-.navbar h2{
+.navbar-brand{
+    font-weight:600;
     font-size:22px;
 }
 
-.navbar .user-info{
-    font-size:14px;
-}
 
-/* Sidebar */
+/* ==========================================================
+   Sidebar
+========================================================== */
 
 .sidebar{
-    width:250px;
-    background:#0f172a;
+    position:fixed;
+    top:65px;
+    left:0;
+    width:270px;
+    height:calc(100vh - 65px);
+    background:#212529;
     color:white;
-    min-height:100vh;
+    overflow-y:auto;
+    box-shadow:3px 0 10px rgba(0,0,0,.2);
 }
 
-.sidebar .logo{
-    text-align:center;
+.sidebar-header{
     padding:20px;
-    font-size:22px;
-    font-weight:bold;
-    background:#1e293b;
+    text-align:center;
+    border-bottom:1px solid #343a40;
 }
 
-.sidebar ul li{
-    border-bottom:1px solid rgba(255,255,255,.05);
+.sidebar-header h4{
+    margin:0;
+    font-weight:600;
 }
 
-.sidebar ul li a{
+.sidebar-header small{
+    color:#adb5bd;
+}
+
+.sidebar-menu{
+    padding-top:15px;
+}
+
+.menu-title{
+    color:#adb5bd;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    padding:18px 20px 8px;
+}
+
+.sidebar a{
     color:white;
+    text-decoration:none;
     display:block;
-    padding:15px 20px;
-    transition:.3s;
+    padding:12px 20px;
+    transition:all .3s ease;
+    border-left:4px solid transparent;
 }
 
-.sidebar ul li a:hover{
-    background:#2563eb;
+.sidebar a i{
+    width:25px;
 }
 
-.sidebar ul li.active a{
-    background:#2563eb;
+.sidebar a:hover{
+    background:#0d6efd;
+    border-left:4px solid white;
+    padding-left:28px;
 }
 
-/* Page Header */
-
-.page-header{
-    margin-bottom:20px;
+.sidebar a.active{
+    background:#0d6efd;
+    border-left:4px solid white;
 }
 
-.page-header h1{
-    color:#2563eb;
-    font-size:28px;
+
+/* ==========================================================
+   Content
+========================================================== */
+
+.content-wrapper{
+    margin-left:270px;
+    margin-top:65px;
+    padding:30px;
 }
 
-/* Cards */
+
+/* ==========================================================
+   Page Title
+========================================================== */
+
+.page-title{
+    font-size:30px;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+
+/* ==========================================================
+   Cards
+========================================================== */
 
 .card{
-    background:#fff;
-    border-radius:10px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 4px 10px rgba(0,0,0,.08);
-}
-
-.card-title{
-    font-size:18px;
-    margin-bottom:10px;
-    color:#444;
-}
-
-/* Buttons */
-
-.btn{
-    display:inline-block;
-    padding:10px 18px;
     border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-size:14px;
-    transition:.3s;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
-.btn-primary{
-    background:#2563eb;
+.card-header{
+    background:#0d6efd;
     color:white;
+    font-weight:600;
+    border-radius:15px 15px 0 0 !important;
 }
 
-.btn-primary:hover{
-    background:#1d4ed8;
-}
-
-.btn-success{
-    background:#16a34a;
-    color:white;
-}
-
-.btn-success:hover{
-    background:#15803d;
-}
-
-.btn-danger{
-    background:#dc2626;
-    color:white;
-}
-
-.btn-danger:hover{
-    background:#b91c1c;
-}
-
-/* Forms */
-
-.form-group{
-    margin-bottom:15px;
-}
-
-.form-group label{
-    display:block;
-    margin-bottom:6px;
-    font-weight:500;
-}
-
-.form-control{
-    width:100%;
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:6px;
-}
-
-.form-control:focus{
-    outline:none;
-    border-color:#2563eb;
-}
-
-/* Tables */
-
-.table{
-    width:100%;
-    border-collapse:collapse;
+.card-body{
     background:white;
 }
 
-.table th{
-    background:#2563eb;
+
+/* ==========================================================
+   Tables
+========================================================== */
+
+.table{
+    vertical-align:middle;
+}
+
+.table thead{
+    background:#0d6efd;
     color:white;
-    padding:12px;
-    text-align:left;
+}
+
+.table thead th{
+    border:none;
+}
+
+.table-hover tbody tr:hover{
+    background:#eef5ff;
 }
 
 .table td{
-    padding:12px;
-    border-bottom:1px solid #ddd;
+    padding:14px;
 }
 
-.table tr:hover{
-    background:#f8fafc;
+
+/* ==========================================================
+   Buttons
+========================================================== */
+
+.btn{
+    border-radius:8px;
+    font-weight:500;
 }
 
-/* Alerts */
+.btn i{
+    margin-right:5px;
+}
+
+
+/* ==========================================================
+   Badges
+========================================================== */
+
+.badge-active{
+    background:#198754;
+    color:white;
+    padding:7px 14px;
+    border-radius:25px;
+    font-size:12px;
+    font-weight:500;
+}
+
+.badge-inactive{
+    background:#dc3545;
+    color:white;
+    padding:7px 14px;
+    border-radius:25px;
+    font-size:12px;
+    font-weight:500;
+}
+
+
+/* ==========================================================
+   Forms
+========================================================== */
+
+.form-control,
+.form-select{
+    border-radius:8px;
+    padding:10px;
+}
+
+.form-control:focus,
+.form-select:focus{
+    box-shadow:none;
+    border-color:#0d6efd;
+}
+
+
+/* ==========================================================
+   Alerts
+========================================================== */
 
 .alert{
-    padding:12px;
-    border-radius:6px;
-    margin-bottom:15px;
+    border:none;
+    border-radius:10px;
 }
 
-.alert-success{
-    background:#dcfce7;
-    color:#166534;
-}
 
-.alert-danger{
-    background:#fee2e2;
-    color:#991b1b;
-}
-
-.alert-warning{
-    background:#fef3c7;
-    color:#92400e;
-}
-
-/* Footer */
+/* ==========================================================
+   Footer
+========================================================== */
 
 .footer{
-    text-align:center;
+    margin-top:30px;
     padding:15px;
-    margin-top:20px;
-    background:#fff;
-    border-top:1px solid #ddd;
-    color:#666;
+    text-align:center;
+    color:#6c757d;
+    font-size:14px;
 }
 
-/* Responsive */
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media(max-width:992px){
+
+    .sidebar{
+        width:230px;
+    }
+
+    .content-wrapper{
+        margin-left:230px;
+    }
+
+}
 
 @media(max-width:768px){
 
-    .wrapper{
-        flex-direction:column;
-    }
-
     .sidebar{
+        position:relative;
         width:100%;
-        min-height:auto;
+        height:auto;
+        top:0;
     }
 
-    .content{
-        padding:15px;
+    .content-wrapper{
+        margin-left:0;
+        margin-top:20px;
+        padding:20px;
     }
 
-    .navbar{
-        flex-direction:column;
-        gap:10px;
+    .page-title{
+        font-size:24px;
     }
 
-    .table{
-        display:block;
-        overflow-x:auto;
-    }
 }

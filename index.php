@@ -155,7 +155,7 @@ if (isset($conn) && $conn) {
                     <thead class="table-light">
                         <tr>
                             <th>Student Name</th>
-                            <th>Roll / Enrollment No</th>
+                            <th>Enrollment No</th>
                             <th>Department</th>
                             <th>Percentage</th>
                             <th>Status</th>
@@ -166,7 +166,7 @@ if (isset($conn) && $conn) {
                         <?php
                         if (isset($conn) && $conn) {
                             $resRecent = mysqli_query($conn, "
-                                SELECT r.result_id, r.percentage, r.status, s.student_name, s.roll_no, d.department_name
+                                SELECT r.result_id, r.percentage, r.status, s.student_name, s.enrollment_no, d.department_name
                                 FROM results r
                                 JOIN students s ON r.student_id = s.student_id
                                 JOIN departments d ON s.department_id = d.department_id
@@ -177,7 +177,7 @@ if (isset($conn) && $conn) {
                                 while ($row = mysqli_fetch_assoc($resRecent)) {
                                     echo "<tr>";
                                     echo "<td class='fw-bold'>" . htmlspecialchars($row['student_name']) . "</td>";
-                                    echo "<td><code>" . htmlspecialchars($row['roll_no']) . "</code></td>";
+                                    echo "<td><code>" . htmlspecialchars($row['enrollment_no']) . "</code></td>";
                                     echo "<td>" . htmlspecialchars($row['department_name']) . "</td>";
                                     echo "<td class='fw-bold text-primary'>" . number_format($row['percentage'], 2) . "%</td>";
                                     if ($row['status'] === 'Pass') {
