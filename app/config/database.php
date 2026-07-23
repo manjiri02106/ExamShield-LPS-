@@ -3,7 +3,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "examshield";
+$database = "examshield_lps";
 
 $conn = new mysqli($host, $username, $password, $database);
 
