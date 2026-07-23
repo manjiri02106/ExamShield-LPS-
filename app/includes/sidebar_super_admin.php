@@ -1,129 +1,135 @@
-<div class="sidebar">
+<?php
+// Determine active page for nav highlighting
+$currentPage = basename($_SERVER['PHP_SELF']);
+$currentDir  = basename(dirname($_SERVER['PHP_SELF']));
 
-    <!-- Sidebar Header -->
+function sidebarActive(string $page, string $currentPage): string {
+    return $currentPage === $page ? 'active' : '';
+}
+?>
+
+<div class="sidebar" id="mainSidebar">
+
+    <!-- ── Logo / Brand ── -->
     <div class="sidebar-header">
-
-        <h4>
-            <i class="bi bi-shield-lock-fill"></i>
-            ExamShield
-        </h4>
-
-        <small>Proctored Examination System</small>
-
+        <a href="../dashboard/super_admin.php" class="sidebar-logo" style="text-decoration:none;">
+            <div class="sidebar-logo-icon">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <div class="sidebar-logo-text">
+                <strong>ExamShield</strong>
+                <span>Learning &amp; Proctoring Suite</span>
+            </div>
+        </a>
     </div>
 
-    <div class="sidebar-menu">
+    <!-- ── Navigation Menu ── -->
+    <nav class="sidebar-menu" aria-label="Main navigation">
 
-        <!-- =========================
-             DASHBOARD
-        ========================== -->
+        <!-- MAIN -->
+        <div class="menu-section-label">Main</div>
 
-        <div class="menu-title">
-            Dashboard
-        </div>
-
-        <a href="../dashboard/super_admin.php">
+        <a href="../dashboard/super_admin.php"
+           class="<?php echo sidebarActive('super_admin.php', $currentPage); ?>"
+           id="sidenavDashboard"
+           title="Dashboard">
             <i class="bi bi-speedometer2"></i>
-            Dashboard
+            <span>Dashboard</span>
         </a>
 
-
-        <!-- =========================
-             ADMIN MANAGEMENT
-        ========================== -->
-
-        <div class="menu-title">
-            Admin Management
-        </div>
-
-        <a href="../users/view_admins.php">
-            <i class="bi bi-person-badge-fill"></i>
-            View Admins
+        <a href="#"
+           class="<?php echo sidebarActive('institutes.php', $currentPage); ?>"
+           id="sidenavInstitutes"
+           title="Institutes">
+            <i class="bi bi-building"></i>
+            <span>Institutes</span>
         </a>
 
-        <a href="../users/create_admin.php">
-            <i class="bi bi-person-plus-fill"></i>
-            Create Admin
+        <a href="../department/view_departments.php"
+           class="<?php echo sidebarActive('view_departments.php', $currentPage); ?>"
+           id="sidenavDepartments"
+           title="Departments">
+            <i class="bi bi-diagram-3"></i>
+            <span>Departments</span>
         </a>
 
-
-        <!-- =========================
-             MASTER DATA
-        ========================== -->
-
-        <div class="menu-title">
-            Master Data
-        </div>
-
-        <a href="../department/view_departments.php">
-            <i class="bi bi-diagram-3-fill"></i>
-            Departments
+        <a href="../users/view_admins.php"
+           class="<?php echo sidebarActive('view_admins.php', $currentPage); ?>"
+           id="sidenavUsers"
+           title="Users">
+            <i class="bi bi-people"></i>
+            <span>Users</span>
         </a>
 
-        <a href="#">
-            <i class="bi bi-building-fill"></i>
-            Institute
+        <a href="#"
+           class="<?php echo sidebarActive('exams.php', $currentPage); ?>"
+           id="sidenavExams"
+           title="Exams">
+            <i class="bi bi-journal-check"></i>
+            <span>Exams</span>
         </a>
 
+        <!-- REPORTS -->
+        <div class="menu-section-label">Reports</div>
 
-        <!-- =========================
-             REPORTS
-        ========================== -->
-
-        <div class="menu-title">
-            Reports
-        </div>
-
-        <a href="#">
-            <i class="bi bi-bar-chart-line-fill"></i>
-            System Reports
+        <a href="#"
+           class="<?php echo sidebarActive('reports.php', $currentPage); ?>"
+           id="sidenavReports"
+           title="Reports">
+            <i class="bi bi-bar-chart-line"></i>
+            <span>Reports</span>
         </a>
 
+        <!-- SYSTEM -->
+        <div class="menu-section-label">System</div>
 
-        <!-- =========================
-             SYSTEM
-        ========================== -->
-
-        <div class="menu-title">
-            System
-        </div>
-
-        <a href="#">
-            <i class="bi bi-bell-fill"></i>
-            Notifications
+        <a href="#"
+           class="<?php echo sidebarActive('notifications.php', $currentPage); ?>"
+           id="sidenavNotifications"
+           title="Notifications">
+            <i class="bi bi-bell"></i>
+            <span>Notifications</span>
         </a>
 
-        <a href="#">
-            <i class="bi bi-gear-fill"></i>
-            Settings
+        <a href="#"
+           class="<?php echo sidebarActive('settings.php', $currentPage); ?>"
+           id="sidenavSettings"
+           title="Settings">
+            <i class="bi bi-gear"></i>
+            <span>Settings</span>
         </a>
 
+        <!-- ACCOUNT -->
+        <div class="menu-section-label">Account</div>
 
-        <!-- =========================
-             ACCOUNT
-        ========================== -->
-
-        <div class="menu-title">
-            Account
-        </div>
-
-        <a href="../profile/profile.php">
+        <a href="../profile/profile.php"
+           class="<?php echo sidebarActive('profile.php', $currentPage); ?>"
+           id="sidenavProfile"
+           title="Profile">
             <i class="bi bi-person-circle"></i>
-            My Profile
+            <span>Profile</span>
         </a>
 
-        <a href="../auth/change_password.php">
-            <i class="bi bi-key-fill"></i>
-            Change Password
+        <a href="../auth/change_password.php"
+           class="<?php echo sidebarActive('change_password.php', $currentPage); ?>"
+           id="sidenavChangePassword"
+           title="Change Password">
+            <i class="bi bi-key"></i>
+            <span>Change Password</span>
         </a>
 
-        <a href="../auth/logout.php">
+        <a href="../auth/logout.php"
+           class="logout-link"
+           id="sidenavLogout"
+           title="Logout"
+           onclick="return confirm('Are you sure you want to logout?');">
             <i class="bi bi-box-arrow-right"></i>
-            Logout
+            <span>Logout</span>
         </a>
 
-    </div>
+    </nav>
 
 </div>
 
-<div class="content-wrapper">
+<!-- Main content wrapper opens here; closed in footer.php -->
+<div class="main-content" id="mainContent">
