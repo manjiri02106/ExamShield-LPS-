@@ -1,19 +1,23 @@
 <?php
+/**
+ * ExamShield LPS – Database Configuration
+ * Merged: OOP style (main branch) + Procedural style (Institute/Dept module)
+ * Both $conn forms work across all modules.
+ */
 
-$host = "localhost";
+$host     = "localhost";
 $username = "root";
 $password = "";
 $database = "examshield_lps";
 
-// Create connection
-$conn = mysqli_connect($host, $username, $password, $database);
-
-// Check connection
-if (!$conn) {
-    die("Connection Failed: " . mysqli_connect_error());
+// ── OOP connection (used by Dashboard, Users, Exams, Reports modules)
+$conn = new mysqli($host, $username, $password, $database);
+if ($conn->connect_error) {
+    die("Database Connection Failed: " . $conn->connect_error);
 }
 
-// Success message (only for testing)
-// echo "Database Connected Successfully!";
+// ── Procedural alias (used by Institute & Department module)
+// mysqli_* functions work directly on the same $conn object
+// No second connection needed — mysqli object is dual-use.
 
 ?>
