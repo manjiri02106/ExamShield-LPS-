@@ -12,6 +12,7 @@ $database = "examshield_lps";
 
 // ── OOP connection (used by Dashboard, Users, Exams, Reports modules)
 $conn = new mysqli($host, $username, $password, $database);
+
 if ($conn->connect_error) {
     die("Database Connection Failed: " . $conn->connect_error);
 }
