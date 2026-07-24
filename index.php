@@ -1,8 +1,41 @@
 <?php
-<<<<<<< HEAD
+require_once(__DIR__ . '/config/database.php');
+
+$totalStudents = 0;
+$passStudents = 0;
+$failStudents = 0;
+$passPercentage = 0;
+
+if (isset($conn) && $conn) {
+    $resSt = mysqli_query($conn, "SELECT COUNT(*) as count FROM students");
+    if ($resSt) $totalStudents = mysqli_fetch_assoc($resSt)['count'];
+
+    $resPass = mysqli_query($conn, "SELECT COUNT(*) as count FROM results WHERE status = 'Pass'");
+    if ($resPass) $passStudents = mysqli_fetch_assoc($resPass)['count'];
+
+    $resFail = mysqli_query($conn, "SELECT COUNT(*) as count FROM results WHERE status = 'Fail'");
+    if ($resFail) $failStudents = mysqli_fetch_assoc($resFail)['count'];
+
+    $totalResults = $passStudents + $failStudents;
+    if ($totalResults > 0) {
+        $passPercentage = round(($passStudents / $totalResults) * 100, 1);
+    }
+}
+
 // --- DUMMY DATA FOR DASHBOARD ---
 
 $kpiCards = [
+    [
+        'title' => 'Pass Percentage',
+        'value' => $passPercentage . '%',
+        'trend' => '',
+        'trendClass' => '',
+        'subtitle' => 'Overall Success Rate',
+        'subtitleClass' => 'badge-success-light',
+        'icon' => 'bx-line-chart',
+        'iconColor' => 'icon-green',
+        'chartId' => 'chartPassPercentage'
+    ],
     [
         'title' => 'Total Faculty',
         'value' => '1,284',
@@ -99,6 +132,8 @@ $facultyStatus = [
 ];
 
 $quickActions = [
+    ['label' => 'Result Generation', 'icon' => 'bx-file-invoice icon-success', 'class' => '', 'url' => 'modules/results/generate_result.php'],
+    ['label' => 'Automatic Evaluation', 'icon' => 'bx-robot icon-primary', 'class' => '', 'url' => 'modules/results/automatic_evaluation.php'],
     ['label' => 'Add Faculty', 'icon' => 'bx-user-plus icon-purple', 'class' => 'add-faculty-trigger'],
     ['label' => 'Bulk Upload', 'icon' => 'bx-cloud-upload icon-green'],
     ['label' => 'Import from CSV', 'icon' => 'bx-file icon-blue'],
@@ -324,9 +359,9 @@ echo '<!DOCTYPE html>
             <!-- Page Header -->
             <div class="page-header">
                 <div class="page-title">
-                    <h1>Faculty Management</h1>
+                    <h1>ExamShield-LPS Dashboard</h1>
                     <div class="breadcrumbs">
-                        <span>Dashboard</span> <i class="bx bx-chevron-right"></i> <span class="current">Faculty Management</span>
+                        <span>Main Dashboard</span> <i class="bx bx-chevron-right"></i> <span class="current">Overview</span>
                     </div>
                 </div>
                 <div class="page-actions">
@@ -510,7 +545,7 @@ echo '
 foreach($quickActions as $action) {
     $extraClass = isset($action['class']) ? ' ' . $action['class'] : '';
     echo '
-                        <button class="action-btn' . $extraClass . '"><i class="bx ' . $action['icon'] . '"></i> ' . $action['label'] . '</button>
+                        ' . (isset($action['url']) ? '<a href="' . $action['url'] . '" class="action-btn' . $extraClass . '" style="display:inline-block; text-decoration:none;"><i class="bx ' . $action['icon'] . '"></i> ' . $action['label'] . '</a>' : '<button class="action-btn' . $extraClass . '"><i class="bx ' . $action['icon'] . '"></i> ' . $action['label'] . '</button>') . '
 ';
 }
 
@@ -663,7 +698,3 @@ echo '
 </html>
 ';
 ?>
-=======
-echo "<h1>Welcome to ExamShield-LPS</h1>";
-?>
->>>>>>> 3ced1864e4b05457a335801454ae2dfe939cccef
