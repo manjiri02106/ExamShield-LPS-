@@ -1,14 +1,21 @@
 <?php
 
 $host = "localhost";
+$dbname = "examshield";
 $username = "root";
 $password = "";
-$database = "examshield_lps";
 
-$conn = new mysqli($host, $username, $password, $database);
+try {
+    $conn = new PDO(
+        "mysql:host=$host;dbname=$dbname",
+        $username,
+        $password
+    );
 
-if ($conn->connect_error) {
-    die("Database Connection Failed: " . $conn->connect_error);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+} catch(PDOException $e) {
+    die("Database Connection Failed: " . $e->getMessage());
 }
 
 ?>
