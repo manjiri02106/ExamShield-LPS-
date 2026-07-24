@@ -9,8 +9,11 @@ header("Content-Type: application/json");
 
 try {
 
-    $student = $conn->query("SELECT * FROM students WHERE student_id = 1")->fetch(PDO::FETCH_ASSOC);
-    $exam = $conn->query("SELECT * FROM exams WHERE exam_id = 1")->fetch(PDO::FETCH_ASSOC);
+   $studentResult = $conn->query("SELECT * FROM students WHERE student_id = 1");
+$student = $studentResult->fetch_assoc();
+
+$examResult = $conn->query("SELECT * FROM exams WHERE exam_id = 1");
+$exam = $examResult->fetch_assoc();
 
     if (!$student || !$exam) {
         throw new Exception("Student or Exam data not found.");

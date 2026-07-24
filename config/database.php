@@ -8,7 +8,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "examshield_lps";
+$database = "examshield";
 
 $conn = new mysqli($host, $username, $password, $database);
 

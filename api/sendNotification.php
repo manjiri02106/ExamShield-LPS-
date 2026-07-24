@@ -10,9 +10,13 @@ header("Content-Type: application/json");
 try {
 
     $query = $conn->prepare("SELECT name, email FROM students WHERE student_id = ?");
-    $query->execute([1]);
+    $studentId = 1;
 
-    $student = $query->fetch(PDO::FETCH_ASSOC);
+    $query->bind_param("i", $studentId);
+    $query->execute();
+
+    $result = $query->get_result();
+    $student = $result->fetch_assoc();
 
     if (!$student) {
         throw new Exception("Student not found.");
@@ -40,5 +44,4 @@ try {
         "message" => $e->getMessage()
     ], JSON_PRETTY_PRINT);
 }
-
 ?>
