@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 // --- DUMMY DATA FOR DASHBOARD ---
 
 $kpiCards = [
@@ -662,3 +663,7 @@ echo '
 </html>
 ';
 ?>
+=======
+echo "<h1>Welcome to ExamShield-LPS</h1>";
+?>
+>>>>>>> 3ced1864e4b05457a335801454ae2dfe939cccef
