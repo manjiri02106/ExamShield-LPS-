@@ -5,12 +5,11 @@
  * Both $conn forms work across all modules.
  */
 
-$host     = "localhost";
+$host = "localhost";
 $username = "root";
 $password = "";
 $database = "examshield_lps";
 
-// ── OOP connection (used by Dashboard, Users, Exams, Reports modules)
 $conn = new mysqli($host, $username, $password, $database);
 
 if ($conn->connect_error) {
