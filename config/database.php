@@ -4,7 +4,7 @@
  * ExamShield LPS
  * Database Connection File
  * ==========================================
- * Merged: OOP style + Procedural style support
+ * Merged: OOP style (main branch) + Procedural style (Institute/Dept module)
  * Both $conn forms work across all modules.
  */
 
@@ -17,6 +17,7 @@ $database = defined('DB_NAME') ? DB_NAME : "examshield_lps";
 
 // Create reusable MySQLi Connection (used by Dashboard, Users, Exams, Reports modules)
 // mysqli_* procedural functions work directly on the same $conn object as well.
+// No second connection needed — mysqli object is dual-use.
 $conn = new mysqli($host, $username, $password, $database);
 
 // Handle connection errors properly
