@@ -2,19 +2,21 @@
 
 require_once "../controllers/NotificationController.php";
 
-    $controller = new NotificationController();
+header("Content-Type: application/json");
 
-    $response = $controller->send(
-        $student["email"],
-        "Welcome to ExamShield LPS",
-        "
-        <h2>ExamShield LPS</h2>
-        <p>Hello <b>{$student['name']}</b>,</p>
-        <p>Welcome to the ExamShield Notification System.</p>
-        <p>Thank you for using our platform.</p>
-        "
-    );
+$controller = new NotificationController();
 
-    echo json_encode($response, JSON_PRETTY_PRINT);
+$response = $controller->send(
+    "tahavsbizz07@gmail.com",
+    "Welcome to ExamShield LPS",
+    "
+    <h2>ExamShield LPS</h2>
+    <p>Hello <b>Taha</b>,</p>
+    <p>Welcome to the ExamShield Notification System.</p>
+    <p>Thank you for using our platform.</p>
+    "
+);
+
+echo json_encode($response, JSON_PRETTY_PRINT);
 
 ?>

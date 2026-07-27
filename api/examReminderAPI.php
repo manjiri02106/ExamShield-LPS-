@@ -2,24 +2,18 @@
 
 require_once "../controllers/ReminderController.php";
 
-    $controller = new ReminderController();
+$controller = new ReminderController();
 
-    $response = $controller->sendReminder(
-        $student["email"],
-        $student["name"],
-        $exam["subject"],
-        $exam["exam_date"],
-        $exam["exam_time"]
-    );
+$response = $controller->sendReminder(
+    "tahavsbizz07@gmail.com",
+    "Taha",
+    "Data Structures",
+    "30 July 2026",
+    "10:00 AM"
+);
 
-    echo json_encode($response, JSON_PRETTY_PRINT);
+header("Content-Type: application/json");
 
-} catch (Exception $e) {
-
-    echo json_encode([
-        "status" => false,
-        "message" => $e->getMessage()
-    ], JSON_PRETTY_PRINT);
-}
+echo json_encode($response, JSON_PRETTY_PRINT);
 
 ?>

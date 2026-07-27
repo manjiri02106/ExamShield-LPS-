@@ -2,24 +2,18 @@
 
 require_once "../controllers/ResultController.php";
 
-    $controller = new ResultController();
+header("Content-Type: application/json");
 
-    $response = $controller->sendResult(
-        $student["email"],
-        $student["name"],
-        $result["subject"],
-        $result["grade"],
-        $result["marks"]
-    );
+$controller = new ResultController();
 
-    echo json_encode($response, JSON_PRETTY_PRINT);
+$response = $controller->sendResult(
+    "tahavsbizz07@gmail.com",
+    "Taha",
+    "Data Structures",
+    "PASS",
+    "89/100"
+);
 
-} catch (Exception $e) {
-
-    echo json_encode([
-        "status" => false,
-        "message" => $e->getMessage()
-    ], JSON_PRETTY_PRINT);
-}
+echo json_encode($response, JSON_PRETTY_PRINT);
 
 ?>
