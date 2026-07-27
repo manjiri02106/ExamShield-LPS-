@@ -1,22 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
-require_once __DIR__ . "/../config/database.php";
-require_once __DIR__ . "/../controllers/ResultController.php";
-
-header("Content-Type: application/json");
-
-try {
-
-   $studentResult = $conn->query("SELECT * FROM students WHERE student_id = 1");
-$student = $studentResult->fetch_assoc();
-
-$resultData = $conn->query("SELECT * FROM results WHERE student_id = 1");
-$result = $resultData->fetch_assoc();
-    if (!$student || !$result) {
-        throw new Exception("Student or Result data not found.");
-    }
+require_once "../controllers/ResultController.php";
 
     $controller = new ResultController();
 
