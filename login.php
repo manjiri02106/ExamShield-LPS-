@@ -1,3 +1,9 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ExamShield Login</title>
+
 <?php
 session_start();
 
@@ -71,10 +77,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+>>>>>>> a38279a7f5760b8a185afbfc10268eab24731b40
 </head>
 
 <body>
 
+<<<<<<< HEAD
+<h2>Faculty Login</h2>
+
+<form action="index.php" method="POST">
+
+   <div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>
+                    <i class="fas fa-user-lock"></i>
+                    Login
+                </h3>
+            </div>
+
+            <div class="card-body">
+
+                <?php if($error!=""){ ?>
+                    <div class="alert alert-danger">
+                        <?php echo $error; ?>
+                    </div>
+                <?php } ?>
+
+                <form method="POST">
+
+                    <div class="mb-3">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+
+                    <button class="btn btn-primary w-100">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+</body>
+=======
 <div class="container">
 
     <div class="row justify-content-center mt-5">
@@ -184,5 +240,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 </body>
-
 </html>

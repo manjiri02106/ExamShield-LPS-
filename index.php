@@ -1,6 +1,5 @@
 <?php
 require_once(__DIR__ . '/config/database.php');
-
 $totalStudents = 0;
 $passStudents = 0;
 $failStudents = 0;
@@ -693,7 +692,7 @@ echo '
         </div>
     </div>
 
-    <script src="script.js?v=<?php echo time(); ?>"></script>
+    <script src="script.js?v=' . time() . '"></script>
 </body>
 </html>
 ';
